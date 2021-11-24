@@ -12,16 +12,16 @@ def play_game(input_data, last_turn):
     day = len(processed)
     last_number_said = processed[-1]
     while day < last_turn:
-        day_said = all_prior_said.get(last_number_said, []).copy()
+        day_said = all_prior_said.get(last_number_said, [])
         if len(day_said) <= 1:
             #today's number is 0
             today_number = 0
-            today_said = all_prior_said.get(today_number, []).copy()
+            today_said = all_prior_said.get(today_number, [])
             today_said.append(day)
             all_prior_said[today_number] = today_said
         else:
             today_number = day_said[-1] - day_said[-2]
-            today_said = all_prior_said.get(today_number, []).copy()
+            today_said = all_prior_said.get(today_number, [])
             today_said.append(day)
             all_prior_said[today_number] = today_said
         last_number_said = today_number
@@ -29,4 +29,4 @@ def play_game(input_data, last_turn):
     print(last_number_said)
     return all_prior_said
 
-all_prior_said = play_game(input_data, 2020)
+all_prior_said = play_game(input_data, 30000000)
